@@ -18,7 +18,7 @@ class OzoneUserBase extends BaseDBObject
         $this->tableName='ozone_user';
         $this->peerName = 'Wikidot\\DB\\OzoneUserPeer';
         $this->primaryKeyName = 'user_id';
-        $this->fieldNames = array( 'user_id' ,  'name' ,  'nick_name' ,  'password' ,  'email' ,  'unix_name' ,  'last_login' ,  'registered_date' ,  'super_admin' ,  'super_moderator' ,  'language' );
+        $this->fieldNames = array( 'user_id' ,  'name' ,  'nick_name' ,  'password' ,  'email' ,  'unix_name' ,  'last_login' ,  'created_at' ,  'super_admin' ,  'super_moderator' ,  'language' );
 
         //$this->fieldDefaultValues=
     }
@@ -108,12 +108,12 @@ class OzoneUserBase extends BaseDBObject
 
     public function getRegisteredDate()
     {
-        return $this->getFieldValue('registered_date');
+        return $this->getFieldValue('created_at');
     }
 
     public function setRegisteredDate($v1, $raw = false)
     {
-        $this->setFieldValue('registered_date', $v1, $raw);
+        $this->setFieldValue('created_at', $v1, $raw);
     }
 
 

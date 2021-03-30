@@ -4,6 +4,7 @@ namespace Ozone\Framework;
 
 
 
+use Illuminate\Support\Facades\Log;
 use Wikidot\Utils\GlobalProperties;
 use Wikijump\Helpers\LegacyTools;
 
@@ -127,6 +128,7 @@ class AjaxModuleWebFlowController extends WebFlowController {
 		if($template != $runData->getModuleTemplate()){
 			$classFile = $runData->getModuleClassPath();
 			$class = LegacyTools::getNamespacedClassFromPath($runData->getModuleClassPath());
+			Log::debug("processing template: ".$runData->getModuleTemplate().", Class: $class");
 			$logger->debug("processing template: ".$runData->getModuleTemplate().", Class: $class");
 
 			require_once ($classFile);

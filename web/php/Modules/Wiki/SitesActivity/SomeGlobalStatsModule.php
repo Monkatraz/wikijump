@@ -57,7 +57,7 @@ class SomeGlobalStatsModule extends SmartyModule
         $totalPages = $row['c'];
         $runData->contextAdd("totalPages", $totalPages);
 
-        $q = "SELECT count(*) AS c FROM ozone_user WHERE registered_date>now() - interval '1 day'";
+        $q = "SELECT count(*) AS c FROM ozone_user WHERE created_at>now() - interval '1 day'";
         $res = $db->query($q);
         $row = $res->nextRow();
         $newUsers = $row['c'];

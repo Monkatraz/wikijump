@@ -4,12 +4,17 @@ namespace Wikijump\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
+
+    /** Connect to the legacy tables. */
+    protected $table = 'ozone_user';
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +23,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'nick_name',
         'email',
         'password',
+        'language'
     ];
 
     /**
